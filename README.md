@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# JourneyBook 🌍✈️  
+A front-end only social media network for users to share their holiday experiences, favourite destinations, and rate places they have visited. Built with a passion for travel and tech, JourneyBook is the place where your adventures come to life!  
 
-## Getting Started
+---
 
-First, run the development server:
+## ✨ Features  
+- **SPA using Next.js:** Fast, smooth and uninterrupted user experience without page reloads.  
+- **Visually Appealing UI:** Crafted with Tailwind CSS and global styles from `globals.css`, giving it a clean and modern look.  
+- **Social Cards:** Display user posts with:  
+  - Username  
+  - Post content  
+  - Reaction buttons: 'Want to Go' and 'I Have Been There'  
+  - Like count  
+- **Add New Posts:** Effortlessly share your holiday experiences via an easy-to-use form.  
+- **Consistent Navigation:** Smooth and simple browsing through a dynamic navigation bar.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Usage  
+- Navigate using the navigation bar to explore posts or add a new one.  
+- Click the reaction buttons ('Want to Go' or 'I Have Been There') to register your feelings.  
+- Use the **Add Page** to share your latest holiday adventure with the world!  
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧠 The Masterminds Behind the Scenes 🕵️‍♂️  
+JourneyBook was crafted by a quirky and passionate team:  
+- **Andrew "The Architect"** -  
+- **Emily "The Design Dynamo"** -  
+- **Jeminah "The Logic Guru"** -  
+- **Zak "The Code Whisperer"** -  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚧 Future Enhancements  
+- Add comments and star rating functionality  
+- Implement user authentication for a personalised experience  
+- Enhance the UI for better mobile responsiveness  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Dive into the world of travel storytelling with JourneyBook! 🌏🚀  
+Your adventures deserve to be shared, so go ahead, post away, and let the world see where you’ve been! 
