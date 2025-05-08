@@ -15,7 +15,7 @@ export default function BeenButton({ post }) {
     if (storedLikesBeen) {
       setLikesBeen(JSON.parse(storedLikesBeen));
     }
-  }, [post.id]);
+  });
 
   // Handle the reaction for "I've already been"
   const handleBeen = () => {
