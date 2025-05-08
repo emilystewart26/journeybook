@@ -47,17 +47,17 @@ export default function SocialCard({ post }) {
   };
 
   return (
-    <div className="card">
+    <div>
       <h3>{post.username}</h3>
       <p>{post.text}</p>
 
       <p>❤️ "I want to go" Likes: {likesWantToGo}</p>
-      <button onClick={handleWantToGo}>
+      <button className='like-button' onClick={handleWantToGo}>
         I want to go
       </button>
 
       <p>✅ "I've been" Likes: {likesBeen}</p>
-      <button onClick={handleBeen}>
+      <button className='like-button' onClick={handleBeen}>
         I've been
       </button>
     </div>
