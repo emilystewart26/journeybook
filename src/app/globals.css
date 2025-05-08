@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* === THE REUSABLE COMPONENT STYLES !! USE KEYWORD FOR CLASSNAME === */
 
-.header, nav {
+.header {
   background-color: var(--accent-sky-blue);
   color: white;
   padding: 8px 16px;  
@@ -110,4 +110,3 @@ margin-top: 12px;
 .mb-4 {
   margin-bottom: 16px;
 }
-

@@ -1,8 +1,8 @@
 import SocialCard from '../components/SocialCard'; 
- // if page.js is inside 'src/app'
-
+import Navbar from '../components/Navbar';
 
 export default function Home() {
+  
   const post = {
     id: 1, // Unique ID for the post
     username: 'Alice',
@@ -11,9 +11,13 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <h1>JourneyBook</h1>
-      <SocialCard post={post} />
-    </main>
+    <>
+      <main className="p-4">
+        <h1 className="text-2xl font-bold mb-4">JourneyBook</h1>
+        <div className="flex justify-center">
+          <SocialCard post={post} />
+        </div>
+      </main>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import "./globals.css";
+import Navbar from '../components/Navbar';
 
 export const metadata = {
   title: "Journey Book",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+      <Navbar />
         {children}
       </body>
     </html>
