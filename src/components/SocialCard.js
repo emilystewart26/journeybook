@@ -1,72 +1,83 @@
-'use client'; 
+'use client';
 
 import { useState, useEffect } from 'react';
 
 export default function SocialCard({ post }) {
-  // Initialize the state for likes for both buttons
-  const [likesWantToGo, setLikesWantToGo] = useState(post.likesWantToGo || 0);  
+  const [likesWantToGo, setLikesWantToGo] = useState(post.likesWantToGo || 0);
   const [likesBeen, setLikesBeen] = useState(post.likesBeen || 0);
 
-  // This useEffect will run only on the client side to fetch stored likes from localStorage
-  useEffect(() => {
-    // Fetch the stored likes from localStorage
-    const storedLikesWantToGo = localStorage.getItem(post.id + '_likes_wantToGo');
-    const storedLikesBeen = localStorage.getItem(post.id + '_likes_been');
+  const [wantSelected, setWantSelected] = useState(false);
+  const [beenSelected, setBeenSelected] = useState(false);
 
-    // If stored likes exist, update the state
-    if (storedLikesWantToGo) {
-      setLikesWantToGo(JSON.parse(storedLikesWantToGo));
-    }
-    if (storedLikesBeen) {
-      setLikesBeen(JSON.parse(storedLikesBeen));
-    }
+  useEffect(() => {
+    const storedWant = localStorage.getItem(post.id + '_likes_wantToGo');
+    const storedBeen = localStorage.getItem(post.id + '_likes_been');
+    const storedWantSelected = localStorage.getItem(post.id + '_want_selected');
+    const storedBeenSelected = localStorage.getItem(post.id + '_been_selected');
+
+    if (storedWant) setLikesWantToGo(JSON.parse(storedWant));
+    if (storedBeen) setLikesBeen(JSON.parse(storedBeen));
+    if (storedWantSelected) setWantSelected(JSON.parse(storedWantSelected));
+    if (storedBeenSelected) setBeenSelected(JSON.parse(storedBeenSelected));
   }, [post.id]);
 
-  // Handle the reaction for "I want to go"
   const handleWantToGo = () => {
-    setLikesWantToGo((prevLikes) => {
-      const newLikes = prevLikes + 1;
+    const newState = !wantSelected;
+    setWantSelected(newState);
+    localStorage.setItem(post.id + '_want_selected', JSON.stringify(newState));
 
-      // Save the updated likes to localStorage
-      localStorage.setItem(post.id + '_likes_wantToGo', JSON.stringify(newLikes));
-
-      return newLikes;
+    setLikesWantToGo((prev) => {
+      const updated = newState ? prev + 1 : prev - 1;
+      localStorage.setItem(post.id + '_likes_wantToGo', JSON.stringify(updated));
+      return updated;
     });
   };
 
-  // Handle the reaction for "I've been"
   const handleBeen = () => {
-    setLikesBeen((prevLikes) => {
-      const newLikes = prevLikes + 1;
+    const newState = !beenSelected;
+    setBeenSelected(newState);
+    localStorage.setItem(post.id + '_been_selected', JSON.stringify(newState));
 
-      // Save the updated likes to localStorage
-      localStorage.setItem(post.id + '_likes_been', JSON.stringify(newLikes));
-
-      return newLikes;
+    setLikesBeen((prev) => {
+      const updated = newState ? prev + 1 : prev - 1;
+      localStorage.setItem(post.id + '_likes_been', JSON.stringify(updated));
+      return updated;
     });
   };
 
   return (
     <div>
-      <h3>{post.username}</h3>
+      <h3 className="text-lg font-semibold">{post.username}</h3>
       <p>{post.text}</p>
       {post.image && (
-      <img
-        src={post.image}
-        alt="Photo"
-        className="my-2 max-w-full h-auto rounded shadow"
-      />
-    )}
+        <img
+          src={post.image}
+          alt="Post"
+          className="w-full h-auto rounded shadow"
+        />
+      )}
 
-      <p>❤️ "I want to go" Likes: {likesWantToGo}</p>
-      <button className='like-button' onClick={handleWantToGo}>
-        I want to go
-      </button>
+      {/* I want to go container */}
+      <div className={`p-4 rounded transition ${wantSelected ? 'bg-green-200' : 'bg-red-200'}`}>
+        <p className="mb-4">❤️ I want to go Likes: {likesWantToGo}</p>
+        <button
+          onClick={handleWantToGo}
+          className="like-button"
+        >
+          {wantSelected ? "I've been" : "I want to go"}
+        </button>
+      </div>
 
-      <p>✅ "I've been" Likes: {likesBeen}</p>
-      <button className='like-button' onClick={handleBeen}>
-        I've been
-      </button>
+      {/* I've been container */}
+      <div className={`p-4 rounded transition ${beenSelected ? 'bg-red-200' : 'bg-green-200'}`}>
+        <p className="mb-4">✅ I've been Likes: {likesBeen}</p>
+        <button
+          onClick={handleBeen}
+          className="button"
+        >
+          {beenSelected ? "I want to go" : "I've been"}
+        </button>
+      </div>
     </div>
   );
 }
