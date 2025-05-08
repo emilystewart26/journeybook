@@ -30,9 +30,9 @@ export default function BeenButton({ post }) {
   };
 
   return (
-    <tr>
-      <td className="like-button" onClick={handleBeen}>✓ I've been here </td>
-      <td className="px-2">{likesBeen}</td>
-    </tr>
+    <div className="flex align-left items-center my-2">
+      <div className="like-button" onClick={handleBeen}>✓ I've been here </div>
+      <div className="px-2">{likesBeen}</div>
+    </div>
   );
 }
