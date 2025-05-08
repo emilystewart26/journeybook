@@ -50,6 +50,13 @@ export default function SocialCard({ post }) {
     <div>
       <h3>{post.username}</h3>
       <p>{post.text}</p>
+      {post.image && (
+      <img
+        src={post.image}
+        alt="Photo"
+        className="my-2 max-w-full h-auto rounded shadow"
+      />
+    )}
 
       <p>❤️ "I want to go" Likes: {likesWantToGo}</p>
       <button className='like-button' onClick={handleWantToGo}>
