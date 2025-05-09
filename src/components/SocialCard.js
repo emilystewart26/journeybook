@@ -45,39 +45,39 @@ export default function SocialCard({ post }) {
     });
   };
 
+  const handleDate = (date) => {
+    return (date.toLocaleDateString("en-GB", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }) + " at " + date.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit"
+      }));
+  };
+
   return (
-    <div>
-      <h3 className="text-lg font-semibold">{post.username}</h3>
+    <div className="card">
+      <h3 className="card-header">{post.username} - {post.location ? post.location : "Location"}</h3>
+      <p className="text-sm text-gray-400 mb-2">{handleDate((new Date(post.date ? post.date : 0)))}</p>
       <p>{post.text}</p>
       {post.image && (
         <img
           src={post.image}
           alt="Post"
-          className="w-full h-auto rounded shadow"
+          className="w-full h-auto rounded shadow p-6"
         />
       )}
 
-      {/* I want to go container */}
-      <div className={`p-4 rounded transition ${wantSelected ? 'bg-green-200' : 'bg-red-200'}`}>
-        <p className="mb-4">❤️ I want to go Likes: {likesWantToGo}</p>
-        <button
-          onClick={handleWantToGo}
-          className="like-button"
-        >
-          {wantSelected ? "I've been" : "I want to go"}
-        </button>
-      </div>
-
-      {/* I've been container */}
-      <div className={`p-4 rounded transition ${beenSelected ? 'bg-red-200' : 'bg-green-200'}`}>
-        <p className="mb-4">✅ I've been Likes: {likesBeen}</p>
-        <button
-          onClick={handleBeen}
-          className="button"
-        >
-          {beenSelected ? "I want to go" : "I've been"}
-        </button>
-      </div>
+        <div className="flex align-left items-center my-2">
+            {/* I want to go button */}
+            <div className="like-button" onClick={handleWantToGo}>♥ I want to go </div>
+            <div className="px-2">{likesWantToGo}</div>
+            
+            {/* I've been button */}
+            <div className="button" onClick={handleBeen}>✓ I've been here </div>
+            <div className="px-2">{likesBeen}</div>
+        </div>
     </div>
   );
 }
