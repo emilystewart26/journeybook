@@ -65,7 +65,7 @@ export default function SocialCard({ post }) {
         <img
           src={post.image}
           alt="Post"
-          className="w-full h-auto rounded shadow"
+          className="w-full h-auto rounded shadow p-6"
         />
       )}
 
