@@ -43,14 +43,6 @@ const Page = () => {
     event.preventDefault();
     const localStoragePosts = localStorage.getItem("posts");
 
-    // if (!postObject.title || !postObject.description) {
-    //   setIsError(true);
-    //   setIsSuccess(false);
-    // } else {
-    //   setIsSuccess(true);
-    //   setIsError(false);
-    // }
-
     const postWithId = {
       ...postObject,
       id: uuidv4(),
