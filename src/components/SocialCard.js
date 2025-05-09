@@ -57,27 +57,15 @@ export default function SocialCard({ post }) {
         />
       )}
 
-      {/* I want to go container */}
-      <div className={`p-4 rounded transition ${wantSelected ? 'bg-green-200' : 'bg-red-200'}`}>
-        <p className="mb-4">❤️ I want to go Likes: {likesWantToGo}</p>
-        <button
-          onClick={handleWantToGo}
-          className="like-button"
-        >
-          {wantSelected ? "I've been" : "I want to go"}
-        </button>
-      </div>
-
-      {/* I've been container */}
-      <div className={`p-4 rounded transition ${beenSelected ? 'bg-red-200' : 'bg-green-200'}`}>
-        <p className="mb-4">✅ I've been Likes: {likesBeen}</p>
-        <button
-          onClick={handleBeen}
-          className="button"
-        >
-          {beenSelected ? "I want to go" : "I've been"}
-        </button>
-      </div>
+        <div className="flex align-left items-center my-2">
+            {/* I want to go button */}
+            <div className="like-button" onClick={handleWantToGo}>♥ I want to go </div>
+            <div className="px-2">{likesWantToGo}</div>
+            
+            {/* I've been button */}
+            <div className="button" onClick={handleBeen}>✓ I've been here </div>
+            <div className="px-2">{likesBeen}</div>
+        </div>
     </div>
   );
 }
