@@ -45,9 +45,21 @@ export default function SocialCard({ post }) {
     });
   };
 
+  const handleDate = (date) => {
+    return (date.toLocaleDateString("en-GB", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }) + " at " + date.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit"
+      }));
+  };
+
   return (
     <div className="card">
-      <h3 className="text-lg font-semibold">{post.username}</h3>
+      <h3 className="card-header">{post.username} - {post.location ? post.location : "Location"}</h3>
+      <p className="text-sm text-gray-400 mb-2">{handleDate((new Date(post.date ? post.date : 0)))}</p>
       <p>{post.text}</p>
       {post.image && (
         <img
