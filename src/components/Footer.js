@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Footer = () => {
     return (
-        <footer className="bg-[#3DB2FF] text-white p-6 shadow-2xl fixed bottom-0 w-full">
+        <footer className="bg-[#3DB2FF] text-white p-6 shadow-2xl bottom-0 w-full">
             <div className=" max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 <div className="flex items-center space-x-3">
                     <Image 
