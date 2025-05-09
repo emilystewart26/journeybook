@@ -1,5 +1,7 @@
 import "./globals.css";
 import Footer from "src/components/Footer"; 
+import Navbar from '../components/Navbar';
+
 
 export const metadata = {
   title: "Journey Book",
@@ -16,6 +18,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+      <Navbar />
         {children}
         <Footer /> 
       </body>

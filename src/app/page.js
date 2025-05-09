@@ -1,7 +1,6 @@
 import SocialCard from '../components/SocialCard'; 
  // if page.js is inside 'src/app'
 
-
  export default function Home() {
   const posts = [
     { id: 1, username: 'Alice', text: 'This place looks amazing!', likes: 0 },
