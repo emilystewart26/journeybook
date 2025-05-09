@@ -1,12 +1,32 @@
+"use client"
 import SocialCard from '../components/SocialCard'; 
+import { useState, useEffect } from "react"
  // if page.js is inside 'src/app'
 
  export default function Home() {
-  const posts = [
-    { id: 1, username: 'Alice', text: 'This place looks amazing!', likes: 0 },
-    { id: 2, username: 'Bob', text: 'Had an unforgettable experience here!', likes: 5 },
-    { id: 3, username: 'Scott', text: 'Exploring new horizons!', likes: 10 },
-  ];
+
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadPosts = () => {
+      try {
+        const storedPosts = localStorage.getItem("posts");
+        if (storedPosts) {
+          setPosts(JSON.parse(storedPosts));
+        }
+        setError(null);
+      } catch (error) {
+        console.error('Error loading todos:', error);
+        setError('Failed to load todos. Please try refreshing the page.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadPosts();
+  }, []);
 
   return (
          <main className="min-h-screen bg-light-sand p-6">

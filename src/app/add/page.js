@@ -26,24 +26,50 @@ const Page = () => {
     }));
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const newPost = {
-      id: uuidv4(), // Unique ID for localStorage tracking
-      username: postObject.username,
-      text: `Went to ${postObject.location}: ${postObject.text}`,
-    };
-
-    setPosts((prev) => [newPost, ...prev]);
-
-    // Reset the form
+  const resetPostObject = () => {
     setPostObject({
       username: "",
       location: "",
       text: "",
-    });
+      image: null
+    
+      })
+  }
+
+
+
+  // Handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const localStoragePosts = localStorage.getItem("posts");
+
+    // if (!postObject.title || !postObject.description) {
+    //   setIsError(true);
+    //   setIsSuccess(false);
+    // } else {
+    //   setIsSuccess(true);
+    //   setIsError(false);
+    // }
+
+    const postWithId = {
+      ...postObject,
+      id: uuidv4(),
+    };
+
+    if (localStoragePosts) {
+      localStorage.setItem(
+        "posts",
+        JSON.stringify([
+          ...JSON.parse(localStoragePosts),
+          postWithId,
+        ])
+      );
+      resetPostObject();
+    } else {
+      localStorage.setItem("posts", JSON.stringify([postWithId]));
+      resetPostObject();
+    }
+
   };
 
   return (
@@ -101,12 +127,6 @@ const Page = () => {
           Post
         </button>
       </form>
-
-      <div className="mt-10 space-y-6">
-        {posts.map((post) => (
-          <SocialCard key={post.id} post={post} />
-        ))}
-      </div>
     </div>
   );
 };
