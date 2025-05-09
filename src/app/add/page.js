@@ -10,7 +10,7 @@ const Page = () => {
     username: "",
     location: "",
     text: "",
-    image: null
+    image: "",
   });
   const [previewImage, setPreviewImage] = useState(null);
 
@@ -31,8 +31,7 @@ const Page = () => {
       username: "",
       location: "",
       text: "",
-      image: null
-    
+      image: "",
       })
   }
 
@@ -44,6 +43,7 @@ const Page = () => {
     const postWithId = {
       ...postObject,
       id: uuidv4(),
+      date: new Date()
     };
 
     if (localStoragePosts) {

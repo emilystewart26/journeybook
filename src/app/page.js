@@ -14,7 +14,7 @@ import { useState, useEffect } from "react"
       try {
         const storedPosts = localStorage.getItem("posts");
         if (storedPosts) {
-          setPosts(JSON.parse(storedPosts));
+          setPosts(JSON.parse(storedPosts).reverse());
         }
         setError(null);
       } catch (error) {
