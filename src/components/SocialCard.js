@@ -62,11 +62,13 @@ export default function SocialCard({ post }) {
       <p className="text-sm text-gray-400 mb-2">{handleDate((new Date(post.date ? post.date : 0)))}</p>
       <p>{post.text}</p>
       {post.image && (
-        <img
-          src={post.image}
-          alt="Post"
-          className="w-full h-auto rounded shadow p-6"
-        />
+        <div className="m-6">
+            <img
+            src={post.image}
+            alt="Post"
+            className="w-full h-auto rounded shadow"
+            />
+        </div>
       )}
 
         <div className="flex align-left items-center my-2">
