@@ -36,8 +36,6 @@ const Page = () => {
       })
   }
 
-
-
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -90,22 +88,16 @@ const Page = () => {
         ))}
 
 <div className="flex flex-col mb-4">
-  <label className="text-gray-700 font-bold mb-1">Upload an Image</label>
+  <label className="text-gray-700 font-bold mb-1">Paste Image URL</label>
   <input
     className="bg-gray-200 border-2 border-gray-300 rounded p-2"
-    type="file"
-    accept="image/*"
-    onChange={(e) => {
-      const file = e.target.files[0];
-      if (file) {
-        setPostObject((prev) => ({ ...prev, image: file }));
-        setPreviewImage(URL.createObjectURL(file));
-      }
-    }}
+    type="text"
+    name="image"
+    onChange={handleInputChange}
   />
-  {previewImage && (
+  {postObject.image && (
     <img
-      src={previewImage}
+      src={postObject.image || ""}
       alt="Preview"
       className="mt-2 w-48 h-auto rounded shadow"
     />
@@ -114,7 +106,7 @@ const Page = () => {
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+          className="bg-[#3DB2FF] hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded"
         >
           Post
         </button>
