@@ -3,14 +3,15 @@
 import WantButton from "./WantButton";
 import BeenButton from "./BeenButton";
 
-export default function SocialCard({ post }) {
+export default function SocialCard({ postID }) {
+    let post = JSON.parse(localStorage.getItem("post-" + postID.toString()));
     return (
         <div className="card">
         <h3>{post.username}</h3>
         <p>{post.text}</p>
         
-        <WantButton post = {post} />
-        <BeenButton post = {post} />
+        <WantButton postID = {postID} />
+        <BeenButton postID = {postID} />
         </div>
     );
 }

@@ -2,28 +2,30 @@
 
 import React, { useState, useEffect } from 'react';
 
-export default function WantButton({ post }) {
+export default function WantButton({ postID }) {
   // Initialize the state
+  let post = JSON.parse(localStorage.getItem("post-" + postID.toString()));
   const [likesWantToGo, setLikesWantToGo] = useState(post.likesWantToGo || 0);
 
   // This useEffect will run only on the client side to fetch stored likes from localStorage
   useEffect(() => {
-    // Fetch the stored likes from localStorage
-    const storedLikesWantToGo = localStorage.getItem(post.likesWantToGo);
-
-    // If stored likes exist, update the state
-    if (storedLikesWantToGo) {
-      setLikesWantToGo(JSON.parse(storedLikesWantToGo));
-    }
+    post = JSON.parse(localStorage.getItem("post-" + postID.toString()));
+    setLikesWantToGo(post.likesWantToGo);
   }, [post.id]);
 
   // Handle the reaction for "I want to go"
   const handleWantToGo = () => {
+    post.hasWant = !post.hasWant;
+    if (post.hasWant) {
+        post.likesBeen -= post.hasBeen;
+        post.hasBeen = false;
+    }
     setLikesWantToGo((prevLikes) => {
-      const newLikes = prevLikes + 1;
+      const newLikes = prevLikes + (post.hasWant ? 1 : -1);
 
       // Save the updated likes to localStorage
-      localStorage.setItem(post.likesWantToGo, JSON.stringify(newLikes));
+      post.likesWantToGo = newLikes;
+      localStorage.setItem("post-" + post.id.toString(), JSON.stringify(post));
 
       return newLikes;
     });
