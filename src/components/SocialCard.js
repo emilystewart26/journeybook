@@ -46,7 +46,7 @@ export default function SocialCard({ post }) {
   };
 
   return (
-    <div>
+    <div className="card">
       <h3 className="text-lg font-semibold">{post.username}</h3>
       <p>{post.text}</p>
       {post.image && (
