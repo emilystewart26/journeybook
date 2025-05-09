@@ -1,4 +1,5 @@
 import "./globals.css";
+import Footer from "src/components/Footer"; 
 
 export const metadata = {
   title: "Journey Book",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
+        <Footer /> 
       </body>
     </html>
   );
